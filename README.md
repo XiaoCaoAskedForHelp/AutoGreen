@@ -17,11 +17,16 @@
 ## 使用
 
 - 点右上角 **Use this template** 按钮复制本 GitHub 仓库，**:warning: 千万不要 Fork，因为 fork 项目的动态并不会让你变绿 :warning:**
-- 修改 [ci.yml 文件的第 7、8 行](https://github.com/justjavac/auto-green/blob/master/.github/workflows/ci.yml#L7-L8) 去掉前面的 `#` 号
 - 修改 [ci.yml 文件的第 19、20 行](https://github.com/justjavac/auto-green/blob/master/.github/workflows/ci.yml#L19-L20) 为自己的 GitHub 账号和昵称
 - (可选) 你可以通过修改 [ci.yml 文件的第 8 行](https://github.com/justjavac/auto-green/blob/master/.github/workflows/ci.yml#L8)来调整频率
 
 计划任务语法有 5 个字段，中间用空格分隔，每个字段代表一个时间单位。
+
+> git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+这里就是指定远程仓库等地址，这里有几个占位符，github 的 actor 和 repository 对象，其实这些我们不用管，在运行的时候会被自动赋值为当前仓库的信息，另外还有 GITHUB_TOKEN 也是在该任务运行的时候自动添加的。
+
+> git commit --allow-empty -m "a commit a day keeps your girlfriend away"
+这里的 commit 操作加上了一个 --allow-empty 选项，意思就是允许空的提交，这也就解释了上文空提交的缘由了。
 
 ```plain
 ┌───────────── 分钟 (0 - 59)
